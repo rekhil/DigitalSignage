@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Slide } from 'src/app/digital-signage/shared/model';
 
 @Component({
@@ -8,5 +8,13 @@ import { Slide } from 'src/app/digital-signage/shared/model';
 })
 export class SlideComponent {
     @Input() slide: Slide;
+    @Output() deleteSlideEmitter: EventEmitter<any>;
 
+    constructor() {
+        this.deleteSlideEmitter = new EventEmitter<any>();
+    }
+
+    public deleteSlide(): void {
+        this.deleteSlideEmitter.emit(this.slide);
+    }
 }

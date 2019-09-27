@@ -13,6 +13,7 @@ import { DataService } from './digital-signage/shared/service';
 import { SlideComponent } from './digital-signage/slide/slide.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview-dialog.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    SlideshowModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

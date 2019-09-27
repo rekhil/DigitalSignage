@@ -9,10 +9,10 @@ import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.compone
   styleUrls: ['./add-series.component.scss']
 })
 export class AddSeriesComponent {
-
   private series: Series;
   private slideList: Slide[];
   private showPreview = false;
+  public imageUrlArray: string[];
   constructor(public dataService: DataService) {
     this.series = new Series();
 
@@ -23,10 +23,21 @@ export class AddSeriesComponent {
       { slideId: 4, duration: 15, templateId: 1, filePath: '../assets/files/kfc.jpg' },
       { slideId: 5, duration: 8, templateId: 1, filePath: '../assets/files/chicking.jpg' }
     ];
+
+
+    this.imageUrlArray = [];
+    this.slideList.forEach(element => {
+      this.imageUrlArray.push(element.filePath);
+    });
   }
 
   addNewSlide() {
 
+  }
+
+  deleteSlide(slide: Slide) {
+    const index = this.slideList.indexOf(slide);
+    this.slideList.splice(index, 1);
   }
 
   previewSeries() {

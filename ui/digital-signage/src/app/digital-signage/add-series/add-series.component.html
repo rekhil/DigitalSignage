@@ -48,13 +48,14 @@
                     <label>Total Duration : 25 secs</label>
 
                     <div *ngFor="let slide of slideList">
-                        <app-slide class="slide" [slide]="slide"></app-slide>
+                        <app-slide class="slide" [slide]="slide" (deleteSlideEmitter)="deleteSlide($event)"></app-slide>
                     </div>
 
                 </form>
                 <button class="btn btn-secondary" (click)="previewSeries()">Preview</button>
                 <button class="btn btn-primary" (click)="createSeries()">Create Series</button>
-                <app-preview-dialog *ngIf="showPreview" [series]="series" (closePreviewEmitter)="closePreview()"></app-preview-dialog>
+                <slideshow *ngIf="showPreview" [imageUrls]="imageUrlArray"></slideshow>
+                <!-- <app-preview-dialog *ngIf="showPreview" [series]="series" (closePreviewEmitter)="closePreview()"></app-preview-dialog> -->
             </div>
         </div>
     </div>
