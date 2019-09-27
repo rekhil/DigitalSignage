@@ -12,24 +12,48 @@ namespace DigitalSignageApi.Controllers
 {
     public class SeriesController : ApiController
     {
+        DigitalSignageRepository repo = new DigitalSignageRepository();
         // GET: api/Series
-        public IEnumerable<Series> GetAllSeries()
+        public async Task<IEnumerable<Series>> GetAllSeries()
         {
-            return new List<Series>();
+            var seriesList = await repo.GetAllSeries();
+            foreach(var series in seriesList)
+            {
+                series.SlideList = await repo.GetSlidesBySeriesId(series.SeriesId);
+                foreach(var slide in series.SlideList)
+                {
+                    slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+                }
+            }
+
+            return seriesList;
         }
 
         // GET: api/Series/5
-        public Series GetSeries(int seriesId)
+        public async Task<Series> GetSeries(long seriesId)
         {
-            return new Series();
+            var series = await repo.GetSeriesBySeriesId(seriesId);
+            series.SlideList = await repo.GetSlidesBySeriesId(series.SeriesId);
+            foreach (var slide in series.SlideList)
+            {
+                slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+            }
+            return series;
         }
 
         // POST: api/Series
         [HttpPost]
         public async Task Post([FromBody]Series series)
         {
-            var repo = new DigitalSignageRepository();
-            await repo.AddNewSeries(series);
+            
+            var seriesId = await repo.AddNewSeries(series);
+            foreach(var slide in series.SlideList)
+            {
+                slide.SeriesId = seriesId;
+                var slideId = await repo.AddNewSlide(slide);
+                foreach (var slideContent in slide.SlideContents)
+                    await repo.AddNewSlideContent(slide.SlideContents, slideId);
+            } 
         }
 
         // PUT: api/Series/5
