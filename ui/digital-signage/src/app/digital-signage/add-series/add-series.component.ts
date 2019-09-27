@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../shared/service';
 import { Series, Slide } from '../shared/model';
+import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
 
 @Component({
   selector: 'app-add-series',
@@ -11,7 +12,7 @@ export class AddSeriesComponent {
 
   private series: Series;
   private slideList: Slide[];
-
+  private showPreview = false;
   constructor(public dataService: DataService) {
     this.series = new Series();
 
@@ -28,9 +29,14 @@ export class AddSeriesComponent {
 
   }
 
-  playSeries() {
-
+  previewSeries() {
+    this.showPreview = true;
   }
+
+  closePreview() {
+    this.showPreview = false;
+  }
+
 
   createSeries() {
     this.dataService.createSeries(this.series);

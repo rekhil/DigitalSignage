@@ -11,6 +11,8 @@ import { BroadcastSeriesListComponent } from './digital-signage/broadcast-series
 import { AddSeriesComponent } from './digital-signage/add-series/add-series.component';
 import { DataService } from './digital-signage/shared/service';
 import { SlideComponent } from './digital-signage/slide/slide.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { SlideComponent } from './digital-signage/slide/slide.component';
     HomeComponent,
     BroadcastSeriesListComponent,
     AddSeriesComponent,
-    SlideComponent
+    SlideComponent,
+    PreviewDialogComponent
   ],
   imports: [
     FormsModule,

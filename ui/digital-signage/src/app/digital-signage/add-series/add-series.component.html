@@ -52,8 +52,9 @@
                     </div>
 
                 </form>
-                <button class="btn btn-secondary" (click)="playSeries()">Preview</button>
+                <button class="btn btn-secondary" (click)="previewSeries()">Preview</button>
                 <button class="btn btn-primary" (click)="createSeries()">Create Series</button>
+                <app-preview-dialog *ngIf="showPreview" [series]="series" (closePreviewEmitter)="closePreview()"></app-preview-dialog>
             </div>
         </div>
     </div>
