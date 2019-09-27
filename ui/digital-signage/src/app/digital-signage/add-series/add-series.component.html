@@ -4,12 +4,33 @@
             <div>
                 <form>
                     <div class="form-group">
+
                         <label for="name">Series Name</label>
                         <input [(ngModel)]="series.seriesName" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
                             placeholder="Enter name">
+
                         <label for="description">Series Description</label>
                         <textarea [(ngModel)]="series.seriesDescription" name="description" class="form-control" id="description" aria-describedby="descHelp">
                           </textarea>
+
+                        <label for="description">Category</label>
+                        <div></div>
+
+                        <label for="description">Resolution</label>
+                        <div></div>
+
+                        <label for="description">Orientation Type</label>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="landscape" name="orientation">
+                            <label class="custom-control-label" for="landscape">Landscape</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="portrait" name="orientation">
+                            <label class="custom-control-label" for="portrait">Portrait</label>
+                        </div>
+
+
+
                     </div>
                 </form>
                 <button class="btn btn-secondary" (click)="playSeries()">Preview</button>
