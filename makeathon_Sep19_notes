@@ -43,3 +43,6 @@ digitalsignage.cqax1v047gse.ap-south-1.rds.amazonaws.com
 port 1433
 username: admin 
 password: team200ok
+
+
+http://api.qrserver.com/v1/create-qr-code/?data=www.facebook.com
