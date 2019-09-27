@@ -1,4 +1,5 @@
-﻿using DigitalSignageApi.Models;
+﻿using Dapper;
+using DigitalSignageApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -140,6 +141,17 @@ namespace DigitalSignageApi.Repository
             }
 
             return SlideContents;
+        }
+
+        public async Task<Slide> GetSlideBySlideId(int slideId)
+        {
+            var slide = new Slide();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                slide = (await conn.QueryAsync<Slide>("usp_GetSlideContentBySlideId",new { SlideId = slideId}, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+            }
+
+            return slide;
         }
 
     }
