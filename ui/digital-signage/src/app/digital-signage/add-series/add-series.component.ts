@@ -17,11 +17,11 @@ export class AddSeriesComponent {
     this.series = new Series();
 
     this.slideList = [
-      { slideId: 1, duration: 10, templateId: 1, filePath: '../assets/files/dominos.jpg' },
-      { slideId: 2, duration: 15, templateId: 1, filePath: '../assets/files/mac.jpg' },
-      { slideId: 3, duration: 5, templateId: 1, filePath: '../assets/files/burger_king.gif' },
-      { slideId: 4, duration: 15, templateId: 1, filePath: '../assets/files/kfc.jpg' },
-      { slideId: 5, duration: 8, templateId: 1, filePath: '../assets/files/chicking.jpg' }
+      { slideId: 1, duration: 10, templateId: 1, filePath: '../assets/files/dominos.jpg', slideContentList: null },
+      { slideId: 2, duration: 15, templateId: 1, filePath: '../assets/files/mac.jpg', slideContentList: null },
+      { slideId: 3, duration: 5, templateId: 1, filePath: '../assets/files/burger_king.gif', slideContentList: null },
+      { slideId: 4, duration: 15, templateId: 1, filePath: '../assets/files/kfc.jpg', slideContentList: null },
+      { slideId: 5, duration: 8, templateId: 1, filePath: '../assets/files/chicking.jpg', slideContentList: null }
     ];
 
 

@@ -4,9 +4,9 @@ export class Series {
     seriesDescription: string;
     // resolutionX: number;
     // resolutionY: number;
-    // orientation: number;
+    orientation: number;
     category: number;
-    // slideList: Slide[];
+    slideList: Slide[];
 }
 
 export class Slide {
@@ -14,7 +14,7 @@ export class Slide {
     duration: number;
     templateId: number;
     filePath: string;
-    // slideContentList: SlideContent[];
+    slideContentList: SlideContent[];
 }
 
 export class SlideContent {
