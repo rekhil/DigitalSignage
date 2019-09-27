@@ -5,21 +5,33 @@
                 <form>
                     <div class="form-group">
 
-                        <label for="name">Series Name</label>
+                        <label>Series Name</label>
                         <input [(ngModel)]="series.seriesName" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
                             placeholder="Enter name">
 
-                        <label for="description">Series Description</label>
+                        <label>Series Description</label>
                         <textarea [(ngModel)]="series.seriesDescription" name="description" class="form-control" id="description" aria-describedby="descHelp">
                           </textarea>
 
-                        <label for="description">Category</label>
-                        <div></div>
+                        <label>Category</label>
+                        <select class="browser-default custom-select mb-4">
+                            <option value="" disabled>Choose Category</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
+                            <option value="4">Category 4</option>
+                        </select>
 
-                        <label for="description">Resolution</label>
-                        <div></div>
+                        <label>Resolution</label>
+                        <select class="browser-default custom-select mb-4">
+                            <option value="" disabled>Choose Resolution</option>
+                            <option value="1">640×480</option>
+                            <option value="2">800×600</option>
+                            <option value="3">960×720</option>
+                            <option value="4">1024×768</option>
+                        </select>
 
-                        <label for="description">Orientation Type</label>
+                        <label>Orientation Type</label>
                         <div class="custom-control custom-radio">
                             <input type="radio" class="custom-control-input" id="landscape" name="orientation">
                             <label class="custom-control-label" for="landscape">Landscape</label>
