@@ -9,7 +9,7 @@ import { Series } from '../shared/model';
 })
 export class BroadcastSeriesListComponent implements OnInit {
 
-  private seriesList: Series[];
+  public seriesList: Series[];
   private selectedSeries: Series;
 
   constructor(public dataService: DataService) { }
