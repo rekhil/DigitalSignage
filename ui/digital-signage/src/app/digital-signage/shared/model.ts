@@ -13,7 +13,8 @@ export class Slide {
     slideId: number;
     duration: number;
     templateId: number;
-    slideContentList: SlideContent[];
+    filePath: string;
+    // slideContentList: SlideContent[];
 }
 
 export class SlideContent {

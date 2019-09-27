@@ -1,9 +1,11 @@
 ﻿using DigitalSignageApi.Models;
+using DigitalSignageApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace DigitalSignageApi.Controllers
@@ -23,9 +25,11 @@ namespace DigitalSignageApi.Controllers
         }
 
         // POST: api/Series
-        public void Post([FromBody]Series series)
+        [HttpPost]
+        public async Task Post([FromBody]Series series)
         {
-
+            var repo = new DigitalSignageRepository();
+            await repo.AddNewSeries(series);
         }
 
         // PUT: api/Series/5
