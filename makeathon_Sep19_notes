@@ -40,6 +40,6 @@ APIS--> GET, POST, DELETE
 
 SERVER::
 digitalsignage.cqax1v047gse.ap-south-1.rds.amazonaws.com
-
-new messages
 port 1433
+username: admin 
+password: team200ok
