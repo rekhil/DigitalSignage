@@ -1,0 +1,8 @@
+<div class="card d-flex flex-row bd-highlight mb-3 slideCard" style="max-height: 10rem;">
+    <img class="card-img-top p-2 bd-highlight img" [src]="slide.filePath" alt="Card image cap">
+    <div fxLayout="row" fx LayoutGap="10px" fxLayoutAlign="start">
+        <label fxFlex="50%">Duration</label>
+        <input fxFlex="50%" [(ngModel)]="slide.duration" type="number" name="duration" class="form-control" id="duration">
+    </div>
+    <button class="btn btn-primary deleteSlide" (click)="deleteSlide()">Remove</button>
+</div>

@@ -45,6 +45,11 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" (click)="addNewSlide()">Add New Slide</button>
+                    <label>Total Duration : 25 secs</label>
+
+                    <div *ngFor="let slide of slideList">
+                        <app-slide class="slide" [slide]="slide"></app-slide>
+                    </div>
 
                 </form>
                 <button class="btn btn-secondary" (click)="playSeries()">Preview</button>
