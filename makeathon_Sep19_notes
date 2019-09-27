@@ -1,0 +1,40 @@
+
+Class: Series
+List<Slide> slideList:
+String seriesName:
+long seriesId:
+String seriesDescription:
+int resolutionX:
+int resolutionY:
+String orientation:
+Schedule scheduling:
+Location location:
+String Category:
+
+
+Class: Slide
+long slideId:
+int duration:
+int templateId:
+List<SlideContent> slideContentList:
+
+
+Class: SlideContent
+long slideContentId:
+String filePath:
+
+
+
+
+Class: Schedule
+
+Class: Location
+
+
+Assumptions:
+Series--> slideList will be in the same sequence as saved in UI.
+Slide--> slideContentList will be in the sequence of positioning in collage.
+
+APIS--> GET, POST, DELETE
+
+
