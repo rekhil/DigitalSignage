@@ -25,9 +25,11 @@ namespace DigitalSignageApi.Controllers
         }
 
         // GET: api/Slide/5
-        public Slide Get(int slideId)
+        public async Task<Slide> GetSlideBySlideId(int slideId)
         {
-            return new Slide();
+            var slide = await repo.GetSlideBySlideId(slideId);
+            slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+            return slide;
         }
 
         [HttpPost]
