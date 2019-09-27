@@ -38,3 +38,8 @@ Slide--> slideContentList will be in the sequence of positioning in collage.
 APIS--> GET, POST, DELETE
 
 
+SERVER::
+digitalsignage.cqax1v047gse.ap-south-1.rds.amazonaws.com
+
+new messages
+port 1433
