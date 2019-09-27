@@ -13,9 +13,9 @@ namespace DigitalSignageApi.Models
         public string SeriesDescription { get; set; }
         public int ResolutionX { get; set; }
         public int ResolutionY { get; set; }
-        public string Orientation { get; set; }
+        public int Orientation { get; set; }
         public Schedule Scheduling { get; set; }
         public Location Location { get; set; }
-        public string Category { get; set; }
+        public int Category { get; set; }
     }
 }
