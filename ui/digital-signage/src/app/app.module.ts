@@ -7,6 +7,8 @@ import { HomeComponent } from './digital-signage/home/home.component';
 import { HeaderComponent } from './digital-signage/header/header.component';
 import { FooterComponent } from './digital-signage/footer/footer.component';
 import { BroadcastSeriesListComponent } from './digital-signage/broadcast-series-list/broadcast-series-list.component';
+import { AddSeriesComponent } from './digital-signage/add-series/add-series.component';
+import { DataService } from './digital-signage/shared/service';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,14 @@ import { BroadcastSeriesListComponent } from './digital-signage/broadcast-series
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    BroadcastSeriesListComponent
+    BroadcastSeriesListComponent,
+    AddSeriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
