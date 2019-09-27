@@ -18,6 +18,10 @@ export class AddSeriesComponent {
   ngOnInit() {
   }
 
+  addNewSlide() {
+
+  }
+
   playSeries() {
 
   }
