@@ -9,6 +9,7 @@ import { FooterComponent } from './digital-signage/footer/footer.component';
 import { BroadcastSeriesListComponent } from './digital-signage/broadcast-series-list/broadcast-series-list.component';
 import { AddSeriesComponent } from './digital-signage/add-series/add-series.component';
 import { DataService } from './digital-signage/shared/service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DataService } from './digital-signage/shared/service';
     AddSeriesComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule
   ],
