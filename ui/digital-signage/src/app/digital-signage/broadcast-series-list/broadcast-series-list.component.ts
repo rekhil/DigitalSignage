@@ -22,9 +22,14 @@ export class BroadcastSeriesListComponent implements OnInit {
       return 'Preview';
     }
   }
-  
+
   get autoSlide(): number {
     return this.selectedSeries && this.selectedSeries.duration && this.selectedSeries.duration > 0 ? this.selectedSeries.duration : 1;
+  }
+
+  get infinite(): boolean {
+    return this.selectedSeries.slideList && this.selectedSeries.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+      && x.slideContentList[0].filePath).length > 1;
   }
 
   constructor(public dataService: DataService) { }

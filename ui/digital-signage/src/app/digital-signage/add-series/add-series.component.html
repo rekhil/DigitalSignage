@@ -59,7 +59,7 @@
                     <button *ngIf="!showPreview" class="btn btn-primary button" (click)="createSeries()" [disabled]="!formValid">Create Series</button>
                     <button class="btn btn-primary button" (click)="previewSeries()" [disabled]="disablePreviewButton">{{previewText}}</button>
                 </div>
-                <ng-image-slider class="slide-show" *ngIf="showPreview" [showArrow]="false" [animationSpeed]="0.1" [infinite]="true" [autoSlide]="autoSlide" [imageSize]="size" [images]="imageObject"
+                <ng-image-slider class="slide-show" *ngIf="showPreview" [showArrow]="false" [animationSpeed]="0.1" [infinite]="infinite" [autoSlide]="autoSlide" [imageSize]="size" [images]="imageObject"
                     #nav></ng-image-slider>
             </div>
         </div>

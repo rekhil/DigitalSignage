@@ -19,4 +19,12 @@ export class DataService {
     public createSeries(series: Series): Observable<Object> {
         return this.http.post<Series>(this.baseUrl + 'series', series);
     }
+
+    public getCategoryNameById(categoryId: any): string {
+        return '';
+    }
+
+    public getOrientationNameById(orientationId: any): string {
+        return '';
+    }
 }

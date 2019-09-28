@@ -25,6 +25,11 @@ export class AddSeriesComponent {
     return true;
   }
 
+  get infinite(): boolean {
+    return this.series.slideList && this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+      && x.slideContentList[0].filePath).length > 1;
+  }
+
   get disablePreviewButton(): boolean {
     return !this.series.slideList || this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
       && x.slideContentList[0].filePath).length === 0
