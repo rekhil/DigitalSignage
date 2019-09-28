@@ -12,7 +12,6 @@ import { AddSeriesComponent } from './digital-signage/add-series/add-series.comp
 import { DataService } from './digital-signage/shared/service';
 import { SlideComponent } from './digital-signage/slide/slide.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview-dialog.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -23,8 +22,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     HomeComponent,
     BroadcastSeriesListComponent,
     AddSeriesComponent,
-    SlideComponent,
-    PreviewDialogComponent
+    SlideComponent
   ],
   imports: [
     NgImageSliderModule,
