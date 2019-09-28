@@ -64,9 +64,10 @@ export class AddSeriesComponent {
     this.showPreview = false;
   }
 
-
   createSeries() {
     this.dataService.createSeries(this.series).subscribe();
     this.series = new Series();
+    this.series.slideList = [];
+    this.addNewSlide();
   }
 }
