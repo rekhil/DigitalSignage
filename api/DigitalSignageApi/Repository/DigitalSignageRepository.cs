@@ -28,6 +28,7 @@ namespace DigitalSignageApi.Repository
                 cmd.Parameters.Add("@ResolutionY", SqlDbType.Int).Value = series.ResolutionY;
                 cmd.Parameters.Add("@Orientation", SqlDbType.Int).Value = series.Orientation;
                 cmd.Parameters.Add("@Category", SqlDbType.Int).Value = series.Category;
+                cmd.Parameters.Add("@Duration", SqlDbType.Int).Value = series.Duration;
                 cmd.Parameters.Add("@SeriesId", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {

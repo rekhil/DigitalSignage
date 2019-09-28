@@ -17,5 +17,6 @@ namespace DigitalSignageApi.Models
         public Schedule Scheduling { get; set; }
         public Location Location { get; set; }
         public int Category { get; set; }
+        public int Duration { get; set; }
     }
 }
