@@ -45,7 +45,8 @@
 
                     <div class="d-flex flex-row row-item">
                         <button class="btn btn-primary" (click)="addNewSlide()"> + Add New Slide</button>
-                        <label class="label1">Total Duration : {{totalDuration}} secs</label>
+                        <label class="label2">Slide Duration: </label>
+                        <input class="duration" [(ngModel)]="series.duration" type="number" name="duration" id="duration">
                     </div>
 
                     <div *ngFor="let slide of series.slideList">
@@ -56,11 +57,10 @@
 
                 <div class="d-flex flex-row-reverse row-item">
                     <button *ngIf="!showPreview" class="btn btn-primary button" (click)="createSeries()" [disabled]="!formValid">Create Series</button>
-                    <button class="btn btn-primary button" (click)="previewSeries()">{{previewText}}</button>
+                    <button class="btn btn-primary button" (click)="previewSeries()" [disabled]="disablePreviewButton">{{previewText}}</button>
                 </div>
-                <slideshow class="slide-show" *ngIf="showPreview" height="480px" minHeight="'480px'" [autoPlay]="true" [showArrows]="false"
-                    [imageUrls]="imageUrlArray" [lazyLoad]="imageUrlArray?.length > 1" [autoPlayWaitForLazyLoad]="true">
-                </slideshow>
+                <ng-image-slider class="slide-show" *ngIf="showPreview" [showArrow]="false" [animationSpeed]="0.1" [infinite]="true" [autoSlide]="autoSlide" [imageSize]="size" [images]="imageObject"
+                    #nav></ng-image-slider>
             </div>
         </div>
     </div>
