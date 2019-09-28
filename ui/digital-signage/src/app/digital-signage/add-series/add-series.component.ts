@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../shared/service';
 import { Series, Slide } from '../shared/model';
-import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
 
 @Component({
   selector: 'app-add-series',
