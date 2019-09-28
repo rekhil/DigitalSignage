@@ -9,35 +9,35 @@ import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.compone
   styleUrls: ['./add-series.component.scss']
 })
 export class AddSeriesComponent {
+
   public series: Series;
-  public slideList: Slide[];
   public showPreview = false;
   public imageUrlArray: string[];
+
   constructor(public dataService: DataService) {
     this.series = new Series();
-
-    this.slideList = [
-      { slideId: 1, duration: 10, templateId: 1, filePath: '../assets/files/dominos.jpg', slideContentList: null },
-      { slideId: 2, duration: 15, templateId: 1, filePath: '../assets/files/mac.jpg', slideContentList: null },
-      { slideId: 3, duration: 5, templateId: 1, filePath: '../assets/files/burger_king.gif', slideContentList: null },
-      { slideId: 4, duration: 15, templateId: 1, filePath: '../assets/files/kfc.jpg', slideContentList: null },
-      { slideId: 5, duration: 8, templateId: 1, filePath: '../assets/files/chicking.jpg', slideContentList: null }
-    ];
-
-
-    this.imageUrlArray = [];
-    this.slideList.forEach(element => {
-      this.imageUrlArray.push(element.filePath);
-    });
+    this.series.slideList = [];
+    this.addNewSlide();
+    // this.imageUrlArray = [];
+    // this.slideList.forEach(element => {
+    //   this.imageUrlArray.push(element.filePath);
+    // });
   }
 
   addNewSlide() {
-
+    const slide = new Slide();
+    slide.duration = 5;
+    slide.templateId = 1;
+    slide.slideContentList = [];
+    slide.slideContentList.push({ slideContentId: 1, filePath: '../assets/files/kfc.jpg' });
+    this.series.slideList.push(slide);
   }
 
   deleteSlide(slide: Slide) {
-    const index = this.slideList.indexOf(slide);
-    this.slideList.splice(index, 1);
+    if (this.series.slideList.length > 1) {
+      const index = this.series.slideList.indexOf(slide);
+      this.series.slideList.splice(index, 1);
+    }
   }
 
   previewSeries() {
