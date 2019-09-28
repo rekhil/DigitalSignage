@@ -66,7 +66,7 @@ export class AddSeriesComponent {
 
 
   createSeries() {
-    this.dataService.createSeries(this.series);
+    this.dataService.createSeries(this.series).subscribe();
     this.series = new Series();
   }
 }

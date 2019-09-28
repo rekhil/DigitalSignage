@@ -16,7 +16,7 @@ export class DataService {
         return this.http.get(this.baseUrl + 'series');
     }
 
-    public createSeries(series: Series) {
-        // api call here
+    public createSeries(series: Series): Observable<Object> {
+        return this.http.post<Series>(this.baseUrl + 'series', series);
     }
 }
