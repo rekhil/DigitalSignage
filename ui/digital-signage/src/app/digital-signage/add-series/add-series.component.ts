@@ -12,7 +12,6 @@ export class AddSeriesComponent {
 
   public series: Series;
   public showPreview = false;
-  public imageUrlArray: string[];
 
   get previewText(): string {
     if (this.showPreview) {
@@ -40,7 +39,6 @@ export class AddSeriesComponent {
 
   constructor(public dataService: DataService) {
     this.createNewSeries();
-    this.imageUrlArray = [];
   }
 
   deleteSlide(slide: Slide) {
