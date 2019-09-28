@@ -13,6 +13,9 @@ export class AddSeriesComponent {
   public series: Series;
   public showPreview = false;
   public imageUrlArray: string[];
+  get totalDuration(): number {
+    return 20;
+  }
 
   constructor(public dataService: DataService) {
     this.series = new Series();

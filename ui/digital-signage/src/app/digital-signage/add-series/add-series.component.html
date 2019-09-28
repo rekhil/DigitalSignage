@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="d-flex flex-row row-item">
-                        <button class="btn btn-primary" (click)="addNewSlide()">Add New Slide</button>
-                        <label class="label1">Total Duration : 25 secs</label>
+                        <button class="btn btn-primary" (click)="addNewSlide()"> + Add New Slide</button>
+                        <label class="label1">Total Duration : {{totalDuration}} secs</label>
                     </div>
 
                     <div *ngFor="let slide of series.slideList">
@@ -52,8 +52,11 @@
                     </div>
 
                 </form>
-                <button class="btn btn-secondary" (click)="previewSeries()">Preview</button>
-                <button class="btn btn-primary" (click)="createSeries()">Create Series</button>
+
+                <div class="d-flex flex-row-reverse row-item">
+                    <button class="btn btn-primary button" (click)="createSeries()">Create Series</button>
+                    <button class="btn btn-primary button" (click)="previewSeries()">Preview</button>
+                </div>
                 <slideshow *ngIf="showPreview" [imageUrls]="imageUrlArray"></slideshow>
                 <!-- <app-preview-dialog *ngIf="showPreview" [series]="series" (closePreviewEmitter)="closePreview()"></app-preview-dialog> -->
             </div>
