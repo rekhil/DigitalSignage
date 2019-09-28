@@ -43,6 +43,19 @@ export class AddSeriesComponent {
     }
   }
 
+  public onCategoryChange(event: any) {
+    this.series.category = +event;
+  }
+
+  public onResolutionChange(event: any) {
+    this.series.resolutionX = +event;
+    this.series.resolutionY = +event;
+  }
+
+  public onOrientationChange(event: any) {
+    this.series.orientation = +event;
+  }
+
   previewSeries() {
     this.showPreview = true;
   }

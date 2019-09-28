@@ -2,8 +2,8 @@ export class Series {
     seriesId: number;
     seriesName: string;
     seriesDescription: string;
-    // resolutionX: number;
-    // resolutionY: number;
+    resolutionX: number;
+    resolutionY: number;
     orientation: number;
     category: number;
     slideList: Slide[];
