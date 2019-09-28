@@ -1,7 +1,7 @@
 <div class="card d-flex flex-row bd-highlight mb-3 slideCard">
     <div class="d-flex flex-column">
         <input type="file" id="fileselect" name="fileselect" accept="image/*" (change)="fileChanged($event)" />
-        <img class="card-img-top p-2 bd-highlight img" [src]="filePath" alt="No Content">
+        <img class="card-img-top p-2 bd-highlight img" [src]="filePath" alt="" >
         <button class="btn btn-primary" (click)="deleteSlide()">Remove</button>
     </div>
 </div>
