@@ -17,13 +17,33 @@ export class AddSeriesComponent {
     return this.series.slideList.filter(x => x.duration && x.duration > 0).reduce((sum, current) => sum + current.duration, 0);;
   }
 
+  get previewText(): string {
+    if (this.showPreview) {
+      return 'Stop Preview';
+    } else {
+      return 'Preview';
+    }
+  }
+
+  get formValid():boolean{
+    return true;
+  }
+
   constructor(public dataService: DataService) {
     this.series = new Series();
     this.series.slideList = [];
     this.addNewSlide();
-    // this.imageUrlArray = [];
-    // this.slideList.forEach(element => {
-    //   this.imageUrlArray.push(element.filePath);
+    this.imageUrlArray = [];
+
+    this.imageUrlArray.push('../assets/files/kfc.jpg');
+
+    this.imageUrlArray.push('../assets/files/chicking.jpg');
+
+    this.imageUrlArray.push('../assets/files/dominos.jpg');
+    // this.series.slideList.forEach(element => {
+    //   if (element.slideContentList && element.slideContentList.length > 0) {
+    //     this.imageUrlArray.push(element.slideContentList[0].filePath);
+    //   }
     // });
   }
 
@@ -57,7 +77,7 @@ export class AddSeriesComponent {
   }
 
   previewSeries() {
-    this.showPreview = true;
+    this.showPreview = !this.showPreview;
   }
 
   closePreview() {

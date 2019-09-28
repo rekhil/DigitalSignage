@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div>
-                <form #addSeriesForm="ngForm">
+                <form *ngIf="!showPreview" #addSeriesForm="ngForm">
                     <div class="d-flex flex-row row-item">
                         <label class="label">Series Name:</label>
                         <input [(ngModel)]="series.seriesName" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
@@ -55,11 +55,12 @@
                 </form>
 
                 <div class="d-flex flex-row-reverse row-item">
-                    <button class="btn btn-primary button" (click)="createSeries()" [disabled]="addSeriesForm.form.invalid">Create Series</button>
-                    <button class="btn btn-primary button" (click)="previewSeries()" [disabled]="addSeriesForm.form.invalid">Preview</button>
+                    <button *ngIf="!showPreview" class="btn btn-primary button" (click)="createSeries()" [disabled]="!formValid">Create Series</button>
+                    <button class="btn btn-primary button" (click)="previewSeries()">{{previewText}}</button>
                 </div>
-                <slideshow *ngIf="showPreview" [imageUrls]="imageUrlArray"></slideshow>
-                <!-- <app-preview-dialog *ngIf="showPreview" [series]="series" (closePreviewEmitter)="closePreview()"></app-preview-dialog> -->
+                <slideshow class="slide-show" *ngIf="showPreview" height="480px" minHeight="'480px'" [autoPlay]="true" [showArrows]="false"
+                    [imageUrls]="imageUrlArray" [lazyLoad]="imageUrlArray?.length > 1" [autoPlayWaitForLazyLoad]="true">
+                </slideshow>
             </div>
         </div>
     </div>
