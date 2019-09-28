@@ -34,12 +34,17 @@ Slide--> slideContentList will be in the sequence of positioning in collage.
 APIS--> GET, POST, DELETE
 
 
-SERVER::
+DB SERVER::
 digitalsignage.cqax1v047gse.ap-south-1.rds.amazonaws.com
 port 1433
 username: admin 
 password: team200ok
 
+UI: 
+https://my-project-1492767399986.firebaseapp.com
+
+API:
+https://digitalsignageapi20190927105227.azurewebsites.net/Help
 
 http://api.qrserver.com/v1/create-qr-code/?data=www.facebook.com
 
