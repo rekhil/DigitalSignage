@@ -32,7 +32,7 @@ export class AddSeriesComponent {
     slide.duration = 5;
     slide.templateId = 1;
     slide.slideContentList = [];
-    slide.slideContentList.push({ slideContentId: 1, filePath: '../assets/files/kfc.jpg' });
+    slide.slideContentList.push({ slideContentId: 1, filePath: null });
     this.series.slideList.push(slide);
   }
 
