@@ -9,9 +9,9 @@ import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.compone
   styleUrls: ['./add-series.component.scss']
 })
 export class AddSeriesComponent {
-  private series: Series;
-  private slideList: Slide[];
-  private showPreview = false;
+  public series: Series;
+  public slideList: Slide[];
+  public showPreview = false;
   public imageUrlArray: string[];
   constructor(public dataService: DataService) {
     this.series = new Series();
