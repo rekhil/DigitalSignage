@@ -1,5 +1,7 @@
 ﻿using DigitalSignageApi.Models;
 using DigitalSignageApi.Repository;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +68,19 @@ namespace DigitalSignageApi.Controllers
         public void Delete(int id)
         {
 
+        }
+        internal static class ViewHelpers
+        {
+            public static JsonSerializerSettings CamelCase
+            {
+                get
+                {
+                    return new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    };
+                }
+            }
         }
     }
 }
