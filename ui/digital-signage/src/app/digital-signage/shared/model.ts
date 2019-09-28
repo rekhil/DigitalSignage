@@ -7,11 +7,11 @@ export class Series {
     orientation: number;
     category: number;
     slideList: Slide[];
+    duration: number;
 }
 
 export class Slide {
     slideId: number;
-    duration: number;
     templateId: number;
     slideContentList: SlideContent[];
 }

@@ -13,9 +13,6 @@ export class AddSeriesComponent {
   public series: Series;
   public showPreview = false;
   public imageUrlArray: string[];
-  get totalDuration(): number {
-    return this.series.slideList.filter(x => x.duration && x.duration > 0).reduce((sum, current) => sum + current.duration, 0);;
-  }
 
   get previewText(): string {
     if (this.showPreview) {
@@ -29,24 +26,21 @@ export class AddSeriesComponent {
     return true;
   }
 
-  public imageObject: Array<object>;
-  public size = { width: 1120, height: 500 };
-  public autoSlide = 1;
-
-  constructor(public dataService: DataService) {
-    this.series = new Series();
-    this.series.slideList = [];
-    this.addNewSlide();
-    this.imageUrlArray = [];
+  get disablePreviewButton(): boolean {
+    return !this.series.slideList || this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+      && x.slideContentList[0].filePath).length === 0
   }
 
-  addNewSlide() {
-    const slide = new Slide();
-    slide.duration = 5;
-    slide.templateId = 1;
-    slide.slideContentList = [];
-    slide.slideContentList.push({ slideContentId: 1, filePath: null });
-    this.series.slideList.push(slide);
+  get autoSlide(): number {
+    return this.series.duration && this.series.duration > 0 ? this.series.duration : 1;
+  }
+
+  public imageObject: Array<object>;
+  public size = { width: 1120, height: 500 };
+
+  constructor(public dataService: DataService) {
+    this.createNewSeries();
+    this.imageUrlArray = [];
   }
 
   deleteSlide(slide: Slide) {
@@ -69,7 +63,7 @@ export class AddSeriesComponent {
     this.series.orientation = +event;
   }
 
-  previewSeries() {
+  public previewSeries() {
     if (!this.showPreview) {
       this.imageObject = [];
       this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
@@ -83,14 +77,28 @@ export class AddSeriesComponent {
     this.showPreview = !this.showPreview;
   }
 
-  closePreview() {
+  public closePreview() {
     this.showPreview = false;
   }
 
-  createSeries() {
+  public createSeries() {
     this.dataService.createSeries(this.series).subscribe();
+    this.createNewSeries();
+  }
+
+  private createNewSeries() {
     this.series = new Series();
+    this.series.duration = 1;
     this.series.slideList = [];
     this.addNewSlide();
   }
+
+  private addNewSlide() {
+    const slide = new Slide();
+    slide.templateId = 1;
+    slide.slideContentList = [];
+    slide.slideContentList.push({ slideContentId: 1, filePath: null });
+    this.series.slideList.push(slide);
+  }
+
 }
