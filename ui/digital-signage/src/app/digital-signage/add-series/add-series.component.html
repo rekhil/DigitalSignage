@@ -18,10 +18,9 @@
                         <label class="label">Category:</label>
                         <select class="browser-default custom-select mb-4" (change)="onCategoryChange($event.target.value)" required>
                             <option value="" disabled>Choose Category</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="3">Category 3</option>
-                            <option value="4">Category 4</option>
+                            <option value="1">Food & Beverages</option>
+                            <option value="2">Movies</option>
+                            <option value="3">Textiles</option>
                         </select>
                     </div>
                     <div class="d-flex flex-row row-item1">
@@ -38,8 +37,8 @@
                         <label class="label">Orientation Type:</label>
                         <select class="browser-default custom-select mb-4" (change)="onOrientationChange($event.target.value)" required>
                             <option value="" disabled>Choose Orientation</option>
-                            <option value="1">Portrait</option>
-                            <option value="2">Landscape</option>
+                            <option value="1">Landscape</option>
+                            <option value="2">Portrait</option>
                         </select>
                     </div>
 
@@ -49,18 +48,19 @@
                         <input class="duration" [(ngModel)]="series.duration" type="number" name="duration" id="duration">
                     </div>
 
-                    <div *ngFor="let slide of series.slideList">
-                        <app-slide class="slide" [slide]="slide" (deleteSlideEmitter)="deleteSlide($event)"></app-slide>
+                    <div class="d-flex flex-row">
+                        <div class="slide" *ngFor="let slide of series.slideList">
+                            <app-slide [slide]="slide" (deleteSlideEmitter)="deleteSlide($event)"></app-slide>
+                        </div>
                     </div>
-
                 </form>
 
                 <div class="d-flex flex-row-reverse row-item">
                     <button *ngIf="!showPreview" class="btn btn-primary button" (click)="createSeries()" [disabled]="!formValid">Create Series</button>
                     <button class="btn btn-primary button" (click)="previewSeries()" [disabled]="disablePreviewButton">{{previewText}}</button>
                 </div>
-                <ng-image-slider class="slide-show" *ngIf="showPreview" [showArrow]="false" [animationSpeed]="0.1" [infinite]="infinite" [autoSlide]="autoSlide" [imageSize]="size" [images]="imageObject"
-                    #nav></ng-image-slider>
+                <ng-image-slider class="slide-show" *ngIf="showPreview" [showArrow]="false" [animationSpeed]="0.1" [infinite]="infinite"
+                    [autoSlide]="autoSlide" [imageSize]="size" [images]="imageObject" #nav></ng-image-slider>
             </div>
         </div>
     </div>

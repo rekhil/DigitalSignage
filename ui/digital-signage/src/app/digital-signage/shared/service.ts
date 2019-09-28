@@ -12,19 +12,28 @@ export class DataService {
 
     constructor(private http: HttpClient) { }
 
-    public getAllSeriesList(): Observable<Object> {
+    public getAllSeriesList(): Observable<any> {
         return this.http.get(this.baseUrl + 'series');
     }
 
-    public createSeries(series: Series): Observable<Object> {
+    public createSeries(series: Series): Observable<any> {
         return this.http.post<Series>(this.baseUrl + 'series', series);
     }
 
     public getCategoryNameById(categoryId: any): string {
+        switch (+categoryId) {
+            case 1: return 'Food & Beverages';
+            case 2: return 'Movies';
+            case 3: return 'Textiles';
+        }
         return '';
     }
 
     public getOrientationNameById(orientationId: any): string {
+        switch (+orientationId) {
+            case 1: return 'Landscape';
+            case 2: return 'Portrait';
+        }
         return '';
     }
 }

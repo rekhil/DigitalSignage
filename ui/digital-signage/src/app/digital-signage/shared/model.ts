@@ -5,7 +5,9 @@ export class Series {
     resolutionX: number;
     resolutionY: number;
     orientation: number;
+    orientationName: string;
     category: number;
+    categoryName: string;
     slideList: Slide[];
     duration: number;
 }

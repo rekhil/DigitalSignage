@@ -9,6 +9,8 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Orientation</th>
+                    <th>Slide Count</th>
                     <th></th>
                 </tr>
             </thead>
@@ -16,7 +18,9 @@
                 <tr *ngFor="let series of seriesList">
                     <td> {{ series.seriesName }}</td>
                     <td> {{ series.seriesDescription }}</td>
-                    <td> {{ series.category }}</td>
+                    <td> {{ series.categoryName }}</td>
+                    <td> {{ series.orientationName }}</td>
+                    <td> {{ series.slideList?.length }}</td>
                     <td>
                         <button class="btn btn-primary" (click)="playSeries(series)"> Play Series >></button>
                     </td>

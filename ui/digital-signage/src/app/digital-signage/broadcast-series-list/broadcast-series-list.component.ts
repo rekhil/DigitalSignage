@@ -14,7 +14,6 @@ export class BroadcastSeriesListComponent implements OnInit {
   public showPreview = false;
   public imageObject: Array<object>;
   public size = { width: 1120, height: 500 };
-
   get previewText(): string {
     if (this.showPreview) {
       return 'Stop Preview';
@@ -39,8 +38,16 @@ export class BroadcastSeriesListComponent implements OnInit {
   }
 
   private getAllSeriesList() {
-    this.dataService.getAllSeriesList()
-      .subscribe((data: Series[]) => this.seriesList = data);
+    this.dataService.getAllSeriesList().subscribe(
+      (data) => {
+        this.seriesList = data;
+        this.seriesList.forEach(element => {
+          element.orientationName = this.dataService.getOrientationNameById(element.orientation);
+          element.categoryName = this.dataService.getCategoryNameById(element.category);
+        })
+      }, (error) => {
+        return;
+      });
   }
 
   public playSeries(series: Series) {
