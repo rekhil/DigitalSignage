@@ -14,7 +14,7 @@ namespace DigitalSignageApi.Repository
     {
         private readonly string connectionString = "Server=digitalsignage.cqax1v047gse.ap-south-1.rds.amazonaws.com,1433;DataBase=DigitalSignage;User Id=admin;Password=team200ok;MultipleActiveResultSets=true";
 
-        public async Task AddNewSeries(Series series)
+        public async Task<int> AddNewSeries(Series series)
         {
             using (var conn = new SqlConnection(connectionString))
             using (var cmd = new SqlCommand("usp_CreateSeries", conn)
@@ -28,14 +28,16 @@ namespace DigitalSignageApi.Repository
                 cmd.Parameters.Add("@ResolutionY", SqlDbType.Int).Value = series.ResolutionY;
                 cmd.Parameters.Add("@Orientation", SqlDbType.Int).Value = series.Orientation;
                 cmd.Parameters.Add("@Category", SqlDbType.Int).Value = series.Category;
+                cmd.Parameters.Add("@SeriesId", SqlDbType.Int).Direction = ParameterDirection.Output;
                 try
                 {
                     conn.Open();
-                    await cmd.ExecuteNonQueryAsync();                    
+                    await cmd.ExecuteNonQueryAsync();
+                    return Convert.ToInt32(cmd.Parameters["@SeriesId"].Value);
                 }
                 catch (Exception e)
                 {
-                    
+                    return 0;
                 }
             }
         }
@@ -154,5 +156,37 @@ namespace DigitalSignageApi.Repository
             return slide;
         }
 
+        public async Task<IEnumerable<Series>> GetAllSeries()
+        {
+            IEnumerable<Series> series;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                series = (await conn.QueryAsync<Series>("usp_GetAllSeries", commandType: CommandType.StoredProcedure)).ToList();
+            }
+
+            return series;
+        }
+
+        public async Task<IEnumerable<Slide>> GetSlidesBySeriesId(long seriesId)
+        {
+            IEnumerable<Slide> slides;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                slides = (await conn.QueryAsync<Slide>("usp_GetSlidesBySeriesId", new { SeriesId = seriesId }, commandType: CommandType.StoredProcedure)).ToList();
+            }
+
+            return slides;
+        }
+
+        public async Task<Series> GetSeriesBySeriesId(long seriesId)
+        {
+            Series series;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                series = (await conn.QueryAsync<Series>("usp_GetSeriesBySeriesId", new { SeriesId = seriesId }, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+            }
+
+            return series;
+        }
     }
 }

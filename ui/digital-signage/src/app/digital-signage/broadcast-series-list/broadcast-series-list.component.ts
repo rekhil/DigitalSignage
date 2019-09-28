@@ -9,13 +9,18 @@ import { Series } from '../shared/model';
 })
 export class BroadcastSeriesListComponent implements OnInit {
 
-  private seriesList: Series[];
+  public seriesList: Series[];
   private selectedSeries: Series;
 
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.seriesList = this.dataService.getAllSeriesList();
+    this.getAllSeriesList();
+  }
+
+  private getAllSeriesList() {
+    this.dataService.getAllSeriesList()
+      .subscribe((data: Series[]) => this.seriesList = data);
   }
 
   public playSeries(series: Series) {
