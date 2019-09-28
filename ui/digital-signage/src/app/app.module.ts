@@ -14,6 +14,7 @@ import { SlideComponent } from './digital-signage/slide/slide.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview-dialog.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SlideshowModule } from 'ng-simple-slideshow';
     PreviewDialogComponent
   ],
   imports: [
+    NgImageSliderModule,
     FormsModule,
     BrowserModule,
     HttpClientModule,

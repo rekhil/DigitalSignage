@@ -25,26 +25,19 @@ export class AddSeriesComponent {
     }
   }
 
-  get formValid():boolean{
+  get formValid(): boolean {
     return true;
   }
+
+  public imageObject: Array<object>;
+  public size = { width: 1120, height: 500 };
+  public autoSlide = 1;
 
   constructor(public dataService: DataService) {
     this.series = new Series();
     this.series.slideList = [];
     this.addNewSlide();
     this.imageUrlArray = [];
-
-    this.imageUrlArray.push('../assets/files/kfc.jpg');
-
-    this.imageUrlArray.push('../assets/files/chicking.jpg');
-
-    this.imageUrlArray.push('../assets/files/dominos.jpg');
-    // this.series.slideList.forEach(element => {
-    //   if (element.slideContentList && element.slideContentList.length > 0) {
-    //     this.imageUrlArray.push(element.slideContentList[0].filePath);
-    //   }
-    // });
   }
 
   addNewSlide() {
@@ -77,6 +70,16 @@ export class AddSeriesComponent {
   }
 
   previewSeries() {
+    if (!this.showPreview) {
+      this.imageObject = [];
+      this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+        && x.slideContentList[0].filePath).forEach(element => {
+          this.imageObject.push({
+            image: element.slideContentList[0].filePath,
+            thumbImage: element.slideContentList[0].filePath
+          });
+        });
+    }
     this.showPreview = !this.showPreview;
   }
 
