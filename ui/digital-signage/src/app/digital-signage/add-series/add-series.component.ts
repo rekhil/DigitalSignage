@@ -22,7 +22,15 @@ export class AddSeriesComponent {
   }
 
   get formValid(): boolean {
-    return true;
+    return this.series
+      && this.series.seriesName && this.series.seriesName.trim().length > 0
+      && this.series.seriesDescription && this.series.seriesDescription.trim().length > 0
+      && this.series.category && this.series.category > 0
+      && this.series.resolutionX && this.series.resolutionX > 0
+      && this.series.orientation && this.series.orientation > 0
+      && this.series.duration && this.series.duration > 0
+      && this.series.slideList && this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+        && x.slideContentList[0].filePath).length > 0;
   }
 
   get infinite(): boolean {
@@ -59,7 +67,7 @@ export class AddSeriesComponent {
 
   public onResolutionChange(event: any) {
     this.series.resolutionX = +event;
-    this.series.resolutionY = +event;
+    this.series.resolutionY = 0;
   }
 
   public onOrientationChange(event: any) {
@@ -85,6 +93,8 @@ export class AddSeriesComponent {
   }
 
   public createSeries() {
+    this.series.slideList = this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+      && x.slideContentList[0].filePath);
     this.dataService.createSeries(this.series).subscribe();
     this.createNewSeries();
   }
