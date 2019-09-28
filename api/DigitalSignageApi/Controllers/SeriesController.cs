@@ -24,7 +24,7 @@ namespace DigitalSignageApi.Controllers
                 series.SlideList = await repo.GetSlidesBySeriesId(series.SeriesId);
                 foreach(var slide in series.SlideList)
                 {
-                    slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+                    slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
                 }
             }
 
@@ -38,7 +38,7 @@ namespace DigitalSignageApi.Controllers
             series.SlideList = await repo.GetSlidesBySeriesId(series.SeriesId);
             foreach (var slide in series.SlideList)
             {
-                slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+                slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
             }
             return series;
         }
@@ -53,8 +53,8 @@ namespace DigitalSignageApi.Controllers
             {
                 slide.SeriesId = seriesId;
                 var slideId = await repo.AddNewSlide(slide);
-                foreach (var slideContent in slide.SlideContents)
-                    await repo.AddNewSlideContent(slide.SlideContents, slideId);
+                foreach (var slideContent in slide.SlideContentList)
+                    await repo.AddNewSlideContent(slide.SlideContentList, slideId);
             } 
         }
 

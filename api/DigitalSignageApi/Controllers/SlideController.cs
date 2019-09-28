@@ -19,7 +19,7 @@ namespace DigitalSignageApi.Controllers
             var slides = await repo.GetAllSlides();
             foreach(var slide in slides)
             {
-                slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+                slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
             }
             return slides;
         }
@@ -28,7 +28,7 @@ namespace DigitalSignageApi.Controllers
         public async Task<Slide> GetSlideBySlideId(int slideId)
         {
             var slide = await repo.GetSlideBySlideId(slideId);
-            slide.SlideContents = await repo.GetSlideContentsBySlideId(slide.SlideId);
+            slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
             return slide;
         }
 
@@ -37,7 +37,7 @@ namespace DigitalSignageApi.Controllers
         public async Task AddSlide([FromBody]Slide slide)
         {
             var slideId = await repo.AddNewSlide(slide);
-            await repo.AddNewSlideContent(slide.SlideContents, slideId);
+            await repo.AddNewSlideContent(slide.SlideContentList, slideId);
         }
 
         // PUT: api/Slide/5

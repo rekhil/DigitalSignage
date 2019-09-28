@@ -1,15 +1,23 @@
-.deleteSlide{
+.item{
     margin-top: 60px;
     margin-bottom: 60px;
-    width: 200px;
 }
 
 .slideCard{
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 5px;
 }
 
 .img{
     width: 200px;
     object-fit:contain;
+}
+
+.label{
+    margin-top: 5px;
+    width: 200px;
+}
+
+.delete-button{
+    margin-left: 100px;
+    width: 200px;
 }

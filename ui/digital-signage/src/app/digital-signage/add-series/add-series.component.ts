@@ -14,17 +14,30 @@ export class AddSeriesComponent {
   public showPreview = false;
   public imageUrlArray: string[];
   get totalDuration(): number {
-    return 20;
+    return this.series.slideList.filter(x => x.duration && x.duration > 0).reduce((sum, current) => sum + current.duration, 0);;
   }
+
+  get previewText(): string {
+    if (this.showPreview) {
+      return 'Stop Preview';
+    } else {
+      return 'Preview';
+    }
+  }
+
+  get formValid(): boolean {
+    return true;
+  }
+
+  public imageObject: Array<object>;
+  public size = { width: 1120, height: 500 };
+  public autoSlide = 1;
 
   constructor(public dataService: DataService) {
     this.series = new Series();
     this.series.slideList = [];
     this.addNewSlide();
-    // this.imageUrlArray = [];
-    // this.slideList.forEach(element => {
-    //   this.imageUrlArray.push(element.filePath);
-    // });
+    this.imageUrlArray = [];
   }
 
   addNewSlide() {
@@ -32,7 +45,7 @@ export class AddSeriesComponent {
     slide.duration = 5;
     slide.templateId = 1;
     slide.slideContentList = [];
-    slide.slideContentList.push({ slideContentId: 1, filePath: '../assets/files/kfc.jpg' });
+    slide.slideContentList.push({ slideContentId: 1, filePath: null });
     this.series.slideList.push(slide);
   }
 
@@ -57,16 +70,27 @@ export class AddSeriesComponent {
   }
 
   previewSeries() {
-    this.showPreview = true;
+    if (!this.showPreview) {
+      this.imageObject = [];
+      this.series.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+        && x.slideContentList[0].filePath).forEach(element => {
+          this.imageObject.push({
+            image: element.slideContentList[0].filePath,
+            thumbImage: element.slideContentList[0].filePath
+          });
+        });
+    }
+    this.showPreview = !this.showPreview;
   }
 
   closePreview() {
     this.showPreview = false;
   }
 
-
   createSeries() {
-    this.dataService.createSeries(this.series);
+    this.dataService.createSeries(this.series).subscribe();
     this.series = new Series();
+    this.series.slideList = [];
+    this.addNewSlide();
   }
 }
