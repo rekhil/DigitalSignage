@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './digital-signage/home/home.component';
 import { HeaderComponent } from './digital-signage/header/header.component';
-import { FooterComponent } from './digital-signage/footer/footer.component';
 import { BroadcastSeriesListComponent } from './digital-signage/broadcast-series-list/broadcast-series-list.component';
 import { AddSeriesComponent } from './digital-signage/add-series/add-series.component';
 import { DataService } from './digital-signage/shared/service';
@@ -20,7 +19,6 @@ import { SlideshowModule } from 'ng-simple-slideshow';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     HomeComponent,
     BroadcastSeriesListComponent,
     AddSeriesComponent,
