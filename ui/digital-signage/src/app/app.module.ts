@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './digital-signage/home/home.component';
 import { HeaderComponent } from './digital-signage/header/header.component';
 import { FooterComponent } from './digital-signage/footer/footer.component';
@@ -13,7 +14,7 @@ import { DataService } from './digital-signage/shared/service';
 import { SlideComponent } from './digital-signage/slide/slide.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PreviewDialogComponent } from './digital-signage/preview-dialog/preview-dialog.component';
-import {SlideshowModule} from 'ng-simple-slideshow';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
     SlideshowModule

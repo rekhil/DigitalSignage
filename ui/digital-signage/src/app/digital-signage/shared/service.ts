@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Series } from './model'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
+
+    private baseUrl = 'https://digitalsignageapi20190927105227.azurewebsites.net/api/';
+
+    constructor(private http: HttpClient) { }
+
     seriesList: Series[] =
         [
             { seriesId: 1, seriesName: "Series 001", seriesDescription: "Series 001 des", category: 1, slideList: null, orientation: 1 },
@@ -13,9 +20,8 @@ export class DataService {
             { seriesId: 4, seriesName: "Series 004", seriesDescription: "Series 004 des", category: 3, slideList: null, orientation: 1 }
         ];
 
-    public getAllSeriesList(): Series[] {
-        return this.seriesList;
-        //api call here
+    public getAllSeriesList(): Observable<Object> {
+        return this.http.get(this.baseUrl + 'series');
     }
 
     public createSeries(series: Series) {
