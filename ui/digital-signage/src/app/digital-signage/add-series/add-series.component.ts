@@ -14,7 +14,7 @@ export class AddSeriesComponent {
   public showPreview = false;
   public imageUrlArray: string[];
   get totalDuration(): number {
-    return 20;
+    return this.series.slideList.filter(x => x.duration && x.duration > 0).reduce((sum, current) => sum + current.duration, 0);;
   }
 
   constructor(public dataService: DataService) {

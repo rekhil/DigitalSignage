@@ -3,9 +3,9 @@
         <input type="file" id="fileselect" name="fileselect" accept="image/*" (change)="fileChanged($event)" />
         <img class="card-img-top p-2 bd-highlight img" [src]="filePath" alt="No Content">
     </div>
-    <div fxLayout="row" fx LayoutGap="10px" fxLayoutAlign="start">
-        <label fxFlex="50%">Duration</label>
-        <input fxFlex="50%" [(ngModel)]="slide.duration" type="number" name="duration" class="form-control" id="duration">
+    <div class="d-flex flex-row row-item item">
+        <label class="label">Duration</label>
+        <input [(ngModel)]="slide.duration" type="number" name="duration" class="form-control" id="duration">
+        <button class="btn btn-primary delete-button" (click)="deleteSlide()">Remove</button>
     </div>
-    <button class="btn btn-primary deleteSlide" (click)="deleteSlide()">Remove</button>
 </div>
