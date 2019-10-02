@@ -9,23 +9,27 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DigitalSignageApi.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SeriesController : ApiController
     {
         DigitalSignageRepository repo = new DigitalSignageRepository();
         // GET: api/Series
+
+        
         public async Task<IEnumerable<Series>> GetAllSeries()
         {
             var seriesList = await repo.GetAllSeries();
             foreach(var series in seriesList)
             {
                 series.SlideList = await repo.GetSlidesBySeriesId(series.SeriesId);
-                foreach(var slide in series.SlideList)
-                {
-                    slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
-                }
+                //foreach(var slide in series.SlideList)
+                //{
+                //    slide.SlideContentList = await repo.GetSlideContentsBySlideId(slide.SlideId);
+                //}
             }
 
             return seriesList;

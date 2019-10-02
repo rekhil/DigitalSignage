@@ -44,7 +44,7 @@ export class BroadcastSeriesListComponent implements OnInit {
         this.seriesList.forEach(element => {
           element.orientationName = this.dataService.getOrientationNameById(element.orientation);
           element.categoryName = this.dataService.getCategoryNameById(element.category);
-        })
+        });
       }, (error) => {
         return;
       });
@@ -54,13 +54,18 @@ export class BroadcastSeriesListComponent implements OnInit {
     this.selectedSeries = series;
     if (!this.showPreview) {
       this.imageObject = [];
-      this.selectedSeries.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
-        && x.slideContentList[0].filePath).forEach(element => {
-          this.imageObject.push({
-            image: element.slideContentList[0].filePath,
-            thumbImage: element.slideContentList[0].filePath
-          });
-        });
+      this.dataService.getAllSeriesById(this.selectedSeries.seriesId).subscribe(
+        (data) => {
+          this.selectedSeries = data;
+          this.selectedSeries.slideList.filter(x => x.slideContentList && x.slideContentList.length > 0
+            && x.slideContentList[0].filePath).forEach(element => {
+              this.imageObject.push({
+                image: element.slideContentList[0].filePath,
+                thumbImage: element.slideContentList[0].filePath
+              });
+            });
+        }
+      );
     }
     this.showPreview = !this.showPreview;
   }

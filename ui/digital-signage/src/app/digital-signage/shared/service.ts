@@ -16,6 +16,10 @@ export class DataService {
         return this.http.get(this.baseUrl + 'series');
     }
 
+    public getAllSeriesById(seriesId: number): Observable<any> {
+        return this.http.get(this.baseUrl + 'series?seriesId=' + seriesId);
+    }
+
     public createSeries(series: Series): Observable<any> {
         return this.http.post<Series>(this.baseUrl + 'series', series);
     }
