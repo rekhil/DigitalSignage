@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-    private baseUrl = 'https://digitalsignageapi20190927105227.azurewebsites.net/api/';
+    private baseUrl = 'https://digitalsignageapi20191002101801.azurewebsites.net/api/';
 
     constructor(private http: HttpClient) { }
 
